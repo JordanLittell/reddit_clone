@@ -1,15 +1,8 @@
 <h1>Sign Up</h1>
-<% if flash[:errors] %>
-  <ul>
-    
-    <% flash[:errors].each do |error| %>
-      <li><%= error %></li>
-    <% end %>
-    
-  </ul>
-<% end %>
+
 <form action="<%= users_url %>" method="POST">
-  
+
+  <%= render :partial => "shared/errors"%>
   <%= auth_token %>
   
   <label for="user-username">Username

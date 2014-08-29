@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+label{
+  margin:5%;
+  display:block;
+  font-size: 1.3em;
+}
+h1,h2,h3{
+  text-align:center;
+}
+#container{
+  width:90%;
+  padding:10px 10px;
+  margin: 0 auto;
+  background: rgba(40,60,90,0.8);
+  color: #DFDFDF;
+}
+form{
+  text-align:center;
+}
+form li{
+  list-style:none;
+}
+input{
+  width:10%;
+}
+a{
+  text-decoration: none;
+}
+nav{
+  margin-left: 10%;
+  margin-bottom: 3%;
+}
+nav a{
+  padding:5px;
+  margin: 0 5%;
+}
+nav a:hover{
+  border-radius: 5px;
+  border: 2px solid rgba(40,60,90,0.8);
+}
