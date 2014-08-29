@@ -1,24 +1,5 @@
 
 <h1>Create a Sub</h1>
 
-<form action=" <%= subs_url %> " method="post">
-  
-  <%= render :partial => "shared/errors"%>
-  
-  <%=auth_token%>
-  
-  <label for="Title">Title
-    <br>
-    <input type="text" name="sub[title]" id="Title" value="<%= @sub.title %>">
-  </label>
-  
-  <label for="description">Description</label>
-    <textarea name="sub[description]" 
-              cols="40" 
-              rows="10" 
-              id="description"></textarea>
-    <br>
-
-  <input type="submit" value="GOOO">
-</label>
+<%= render :partial => "shared/form"%>
   

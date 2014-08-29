@@ -19,10 +19,12 @@ class SubsController < ApplicationController
   end
   
   def edit
+    @sub = Sub.find_by_id(params[:id])
   end
   
   def show
     @sub = Sub.find_by_id(params[:id])
+    render :show
   end
   
   def index
