@@ -3,10 +3,11 @@ class PostsController < ApplicationController
     @subs = Sub.all
     @post = Post.new(post_params)
     @post.author_id = current_user.id
- 
+    @post.subs_ids = params[:post][:sub_ids]
     if @post.save 
       redirect_to post_url(@post)
     else
+      fail
       flash.now[:errors] = @post.errors.full_messages
       render :new
     end 

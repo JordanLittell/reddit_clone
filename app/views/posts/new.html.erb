@@ -3,7 +3,7 @@
 <form action="<%= posts_url %>" method="POST">
         
     <%= auth_token %>
-        
+    <%= render :partial => "shared/errors"%>
     <label for="post-title">Title<br>
         <input type="text" name="post[title]" id="post-title">
     </label>
