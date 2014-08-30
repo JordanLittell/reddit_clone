@@ -1,0 +1,8 @@
+<!-- <form action="<%= session_url %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <%= auth_token %>
+  <input type="submit" value="Logout!">
+</form> -->
+
+
+<%= button_to "Logout!", session_url, method: :delete %>

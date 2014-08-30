@@ -7,8 +7,9 @@ class SubsController < ApplicationController
   end
   
   def create
-    @sub = Sub.new(sub_params)
-    @sub.moderator_id = current_user.id
+    # @sub = Sub.new(sub_params)
+    # @sub.author_id = current_user.id
+    @sub = current_user.subs.new(sub_params)
     
     if @sub.save
       redirect_to sub_url(@sub)
@@ -18,12 +19,22 @@ class SubsController < ApplicationController
     end
   end
   
+  def update 
+    @sub = Sub.find(params[:id])
+    if @sub.update(sub_params)
+      redirect_to sub_url(@sub)
+    else
+      flash[:errors] = @sub.errors.full_messages
+      render :edit
+    end
+  end
+  
   def edit
-    @sub = Sub.find_by_id(params[:id])
+    @sub = Sub.find(params[:id])
   end
   
   def show
-    @sub = Sub.find_by_id(params[:id])
+    @sub = Sub.find(params[:id])
     render :show
   end
   
@@ -31,7 +42,7 @@ class SubsController < ApplicationController
   end
   
   def sub_params
-    params.require(:sub).permit(:description, :title, :moderator_id)
+    params.require(:sub).permit(:description, :title, :author_id)
   end
   
 end

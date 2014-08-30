@@ -1,6 +1,5 @@
 <h1>Welcome <%= current_user.username %></h1>
 
-<form action="<%= session_url %>" method="POST">
 <% if flash[:notice] %>
   <ul>
     <% flash[:notice].each do |notice| %>
@@ -8,10 +7,3 @@
     <% end %>
   </ul>
 <% end %>
-
-  <input type="hidden" name="_method" value="DELETE">
-  
-  <%= auth_token %>
-  
-  <input type="submit" value="Logout!">
-</form>

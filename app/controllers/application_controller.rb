@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    user = User.find_by_session_token(session[:session_token])
-    user ? user : nil
+    return nil unless session[:session_token]
+    @user ||= User.find_by_session_token(session[:session_token])
   end
   
   def log_out!(user)
     user.reset_session_token!
-    session[:session_token] = SecureRandom.urlsafe_base64(16)
+    session[:session_token] = nil
   end
   
   def auth_token

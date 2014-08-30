@@ -11,20 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829201824) do
+ActiveRecord::Schema.define(version: 20140830000655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "subs", force: true do |t|
-    t.string   "title",        null: false
-    t.string   "description"
-    t.integer  "moderator_id", null: false
+  create_table "post_subs", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "sub_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "subs", ["moderator_id"], name: "index_subs_on_moderator_id", using: :btree
+  add_index "post_subs", ["post_id"], name: "index_post_subs_on_post_id", using: :btree
+  add_index "post_subs", ["sub_id"], name: "index_post_subs_on_sub_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "content"
+    t.integer  "author_id"
+    t.integer  "sub_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+  add_index "posts", ["sub_id"], name: "index_posts_on_sub_id", using: :btree
+
+  create_table "subs", force: true do |t|
+    t.string   "title",       null: false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "author_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

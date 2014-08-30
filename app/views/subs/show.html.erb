@@ -3,5 +3,6 @@
 <%= @sub.title %>
 <br>
 <%= @sub.description %>
-      
-
+<% if current_user.id == @sub.author_id%>
+<%= link_to "edit", edit_sub_url(@sub) %>
+<%end%>

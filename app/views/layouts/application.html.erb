@@ -8,12 +8,14 @@
 </head>
 <body>
   <nav>
-    <% if current_user %>
-      <%="Welcome "+current_user.username.camelcase%>
-    <%end%>
+    <% unless current_user.username.nil? %>
+     Welcome <%= current_user.username.camelcase %>
+      <%= render :partial => "shared/logout"%>
+    <% end %>
     <%=link_to "Sign Up", new_user_url%>
     <%=link_to "Sign In", new_session_url%>
     <%=link_to "Create Subs", new_sub_url%>
+    <%=link_to "Create Post", new_post_url%>
   </nav>
   <div id="container">
 

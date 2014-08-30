@@ -1,0 +1,29 @@
+<% method = sub.persisted? ? "PATCH" : "POST" %>
+<% value = sub.persisted? ? "EDIT" : "GOOOO" %>
+<% the_link = sub.persisted? ? sub_url(sub) : subs_url %>
+
+
+    <form action="<%= the_link %>" method="post">
+        <%= render :partial => "shared/errors"%>
+        <input type='hidden' name="_method" value="<%= method %>">
+        <%= auth_token %>
+        <label for="sub-title">Sub Title
+            <input 
+            type="text"
+            name="sub[title]" 
+            value="<%= sub.title %>"
+            id="sub-title">            
+        </label>
+        <br>
+        <label for="sub-description">Sub Description</label>
+        <textarea
+            name="sub[description]" 
+            rows="10"
+            cols="50"
+            value="<%= sub.description %>"
+            id="sub-description"></textarea>
+        <br>
+
+        <input type="submit" value="<%= value %>!">
+    </form>
+  
