@@ -12,13 +12,8 @@
     <label for="post-content">Content<br>
         <textarea name="post[content]"></textarea>
     </label>
-      <%=@post.subs%>
-    <%= @post.subs.each do |sub| %>
-        <input type='checkbox' 
-               name='post[sub_id][]'
-               value='<%= sub.id %>'
-              <%='checked' if @post.sub_id == sub.id %>>
-    <% end %>  
+
+    <%= render "checkboxes", :subs => @subs, :post => @post %> 
     
     <input type="submit" value="Edit Post">
 </form>

@@ -12,13 +12,6 @@
         <textarea cols="50" rows="20" name="post[content]"
             id="post-content"></textarea>
     </label>
-    <%@subs.each do |sub|%>
-        <input type='checkbox' 
-               name='post[sub_id][]'
-               value='<%= sub.id %>'
-              ><%=sub.id%>
-              <br>
-    <% end %>
-    
+    <%=render "checkboxes", :subs => @subs, :post => @post %>
     <input type="submit" value="New Post">
 </form>
